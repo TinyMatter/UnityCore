@@ -12,13 +12,16 @@ namespace TinyMatter.CardClash.Core {
             if (!items.ContainsKey(key)) {
                 items.Add(key, value);
             }
-                
         }
 
         public void Remove(TKey key)
         {
             if (items.ContainsKey(key))
                 items.Remove(key);
+        }
+
+        public void Clear() {
+            items.Clear();
         }
         
         public TValue this[TKey key] {
