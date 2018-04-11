@@ -39,5 +39,13 @@ namespace TinyMatter.CardClash.Core {
         public bool TryGetValue(TKey key, out TValue value) {
             return items.TryGetValue(key, out value);
         }
+
+        public bool ContainsKey(TKey key) {
+            return items.ContainsKey(key);
+        }
+        
+        public bool ContainsValue(TValue value) {
+            return items.ContainsValue(value);
+        }
     }
 }
