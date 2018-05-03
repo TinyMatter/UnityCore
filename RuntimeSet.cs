@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace TinyMatter.CardClash.Core {
-    public abstract class RuntimeSet<T> : ScriptableObject, IOnChangeTriggerable
+    public abstract class RuntimeSet<T> : RuntimeSetBase, IRuntimeSet<T>, IOnChangeTriggerable
     {
-        [SerializeField] [Multiline] private string DeveloperDescription = "";
+        [Multiline] [SerializeField] private string DeveloperDescription = "";
         
         public List<T> items = new List<T>();
         
-        public int Count => items.Count;
+        public override int Count => items.Count;
         
         public int IndexOf(T thing) {
             return items.IndexOf(thing);
@@ -33,7 +33,7 @@ namespace TinyMatter.CardClash.Core {
             }
         }
         
-        public void Clear() {
+        public override void Clear() {
            items.Clear();
            Raise();
         }

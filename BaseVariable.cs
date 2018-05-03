@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace TinyMatter.CardClash.Core {
     
-    public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, IOnChangeTriggerable {
-        [SerializeField] [Multiline] private string DeveloperDescription = "";
+    public abstract class BaseVariable<T> : BaseVariableBase, IBaseVariable<T>, ISerializationCallbackReceiver, IOnChangeTriggerable {
+        [Multiline] [SerializeField] private string DeveloperDescription = "";
         
         [SerializeField] private T initialValue;
 
@@ -24,11 +24,13 @@ namespace TinyMatter.CardClash.Core {
             }
         }
 
+        public void SetValue(IBaseVariable<T> value) {
+            SetValue(value as BaseVariable<T>);
+        }
+
         public void SetValue(BaseVariable<T> value) {
             SetValue(value.Value);
         }
-
-        #region IOnChangeTriggerable methods
 
         private readonly List<Action> changeListeners = new List<Action>();
 
@@ -40,26 +42,23 @@ namespace TinyMatter.CardClash.Core {
         public void UnregisterChangeListener(Action listener) {
             if (changeListeners.Contains(listener))
                 changeListeners.Remove(listener);
-        }        
-
-        #endregion
+        }
         
         private void Raise() {
             for (var i = changeListeners.Count - 1; i >= 0; i--)
                 changeListeners[i].Invoke();
         }
-        
-        
-        #region serialisation
 
         public void OnBeforeSerialize() { }
 
         public void OnAfterDeserialize() {
             //reset value
+            Reset();
+        }
+
+        public override void Reset() {
             _value = initialValue;
         }
-        
-        #endregion
     }
     
 }

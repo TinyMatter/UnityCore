@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TinyMatter.CardClash.Core {
     
     [CustomEditor(typeof(GameEvent))]
-    public class GameEventEditor : Editor {
+    public class GameEventEditor : UnityEditor.Editor {
         
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();

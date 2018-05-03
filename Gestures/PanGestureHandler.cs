@@ -32,9 +32,9 @@ namespace TinyMatter.CardClash.Gameplay {
             
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
-                hitHandler?.Invoke(hit, gestureRecognizer.State);
-            }
+            Physics.Raycast(ray, out hit);
+
+            hitHandler?.Invoke(hit, gestureRecognizer.State);
         }
 
         protected override GestureRecognizer GetRecognizer() {

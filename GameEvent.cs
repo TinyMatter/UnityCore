@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace TinyMatter.CardClash.Core {
 
-	[CreateAssetMenu]
+	[CreateAssetMenu(menuName = "Events/Game")]
 	public class GameEvent : ScriptableObject {
-		[SerializeField] [Multiline] private string DeveloperDescription = "";
+		[Multiline] [SerializeField] private string DeveloperDescription = "";
 		
 		/// <summary>
 		/// The list of listeners that this event will notify if it is raised.

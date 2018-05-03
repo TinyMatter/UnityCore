@@ -1,12 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace TinyMatter.CardClash.Core {
-    public abstract class RuntimeDictionary<TKey, TValue> : ScriptableObject
+    public abstract class RuntimeDictionary<TKey, TValue> : RuntimeDictionaryBase, IRuntimeDictionary<TKey, TValue>
     {
-        [SerializeField] [Multiline] private string DeveloperDescription = "";
-        
+        [Multiline] [SerializeField] private string DeveloperDescription = "";
+
         public Dictionary<TKey, TValue> items = new Dictionary<TKey, TValue>();
 
         public void Add(TKey key, TValue value)
@@ -22,7 +22,7 @@ namespace TinyMatter.CardClash.Core {
                 items.Remove(key);
         }
 
-        public void Clear() {
+        public override void Clear() {
             items.Clear();
         }
         
@@ -49,5 +49,7 @@ namespace TinyMatter.CardClash.Core {
         public bool ContainsValue(TValue value) {
             return items.ContainsValue(value);
         }
+
+        public int Count => items.Count;
     }
 }

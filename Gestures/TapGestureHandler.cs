@@ -6,6 +6,8 @@ namespace TinyMatter.CardClash.Gameplay {
         
         [SerializeField]
         private int numberOfTapsRequired = 1;
+
+        [SerializeField] private bool immediatelySendBeganEvent = false;
         
         private TapGestureRecognizer gesture = new TapGestureRecognizer();
 
@@ -19,6 +21,7 @@ namespace TinyMatter.CardClash.Gameplay {
             FingersScript.Instance.AddGesture(gesture);
             gesture.NumberOfTapsRequired = numberOfTapsRequired;
             gesture.AllowSimultaneousExecutionWithAllGestures();
+            gesture.SendBeginState = immediatelySendBeganEvent;
             gesture.StateUpdated += TapGesture_StateUpdated;
         }
 
@@ -32,11 +35,9 @@ namespace TinyMatter.CardClash.Gameplay {
     
             RaycastHit hit;
             
-            if (Physics.Raycast(ray, out hit)) {
-                if (hitHandler != null) {
-                    hitHandler.Invoke(hit, gestureRecognizer.State);   
-                }
-            }
+            Physics.Raycast(ray, out hit);
+
+            hitHandler?.Invoke(hit, gestureRecognizer.State);
         }
     }
 }
