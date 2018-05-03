@@ -5,10 +5,7 @@ namespace TinyMatter.CardClash.Core {
 
 	[CreateAssetMenu]
 	public class GameEvent : ScriptableObject {
-		#if UNITY_EDITOR
-		[Multiline]
-		public string DeveloperDescription = "";
-		#endif
+		[SerializeField] [Multiline] private string DeveloperDescription = "";
 		
 		/// <summary>
 		/// The list of listeners that this event will notify if it is raised.

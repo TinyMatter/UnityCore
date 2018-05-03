@@ -6,6 +6,8 @@ using UnityEngine;
 namespace TinyMatter.CardClash.Core {
     public abstract class RuntimeSet<T> : ScriptableObject, IOnChangeTriggerable
     {
+        [SerializeField] [Multiline] private string DeveloperDescription = "";
+        
         public List<T> items = new List<T>();
         
         public int Count => items.Count;

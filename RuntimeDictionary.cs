@@ -5,6 +5,8 @@ using UnityEngine;
 namespace TinyMatter.CardClash.Core {
     public abstract class RuntimeDictionary<TKey, TValue> : ScriptableObject
     {
+        [SerializeField] [Multiline] private string DeveloperDescription = "";
+        
         public Dictionary<TKey, TValue> items = new Dictionary<TKey, TValue>();
 
         public void Add(TKey key, TValue value)

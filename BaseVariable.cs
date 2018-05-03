@@ -6,10 +6,7 @@ using UnityEngine;
 namespace TinyMatter.CardClash.Core {
     
     public abstract class BaseVariable<T> : ScriptableObject, ISerializationCallbackReceiver, IOnChangeTriggerable {
-        #if UNITY_EDITOR
-        [Multiline]
-        public string DeveloperDescription = "";
-        #endif
+        [SerializeField] [Multiline] private string DeveloperDescription = "";
         
         [SerializeField] private T initialValue;
 
