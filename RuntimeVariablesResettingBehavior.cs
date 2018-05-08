@@ -7,9 +7,17 @@ namespace TinyMatter.CardClash.Core {
         [SerializeField] private VariableSet variablesToReset;
 
         private void OnDestroy() {
-            setsToReset.Reset();
-            dictionariesToReset.Reset();
-            variablesToReset.Reset();
+            if (setsToReset != null){
+                setsToReset.Reset();    
+            }
+
+            if (dictionariesToReset != null) {
+                dictionariesToReset.Reset();    
+            }
+
+            if (variablesToReset != null) {
+                variablesToReset.Reset();    
+            }            
         }
     }
 }
