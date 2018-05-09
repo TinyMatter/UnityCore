@@ -8,6 +8,8 @@ namespace TinyMatter.CardClash.Gameplay {
         private int numberOfTapsRequired = 1;
 
         [SerializeField] private bool immediatelySendBeganEvent = false;
+
+        [SerializeField] private GestureHandler[] requiredToFail;
         
         private TapGestureRecognizer gesture = new TapGestureRecognizer();
 
@@ -23,6 +25,10 @@ namespace TinyMatter.CardClash.Gameplay {
             gesture.AllowSimultaneousExecutionWithAllGestures();
             gesture.SendBeginState = immediatelySendBeganEvent;
             gesture.StateUpdated += TapGesture_StateUpdated;
+
+            foreach (var gestureHandler in requiredToFail) {
+                RequireGestureHandlerToFail(gestureHandler);
+            }
         }
 
         private void OnDestroy() {
