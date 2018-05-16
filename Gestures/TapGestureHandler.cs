@@ -36,8 +36,8 @@ namespace TinyMatter.CardClash.Gameplay {
         }
 
         private void TapGesture_StateUpdated(GestureRecognizer gestureRecognizer) {
-            Vector3 screenTouchPosition = new Vector3(gestureRecognizer.FocusX, gestureRecognizer.FocusY, 0f);
-            Ray ray = Camera.main.ScreenPointToRay(screenTouchPosition);
+            var screenTouchPosition = new Vector3(gestureRecognizer.FocusX, gestureRecognizer.FocusY, 0f);
+            var ray = unityService.mainCamera.ScreenPointToRay(screenTouchPosition);
     
             RaycastHit hit;
             
