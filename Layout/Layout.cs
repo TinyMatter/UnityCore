@@ -24,9 +24,7 @@ public class Layout : MonoBehaviour {
         canvasScaler.Configure(device);
     }
 
-    private void Start() {
+    public void Prepare() {
         Canvas.ForceUpdateCanvases();
-        
-        layoutReadyEvent.Raise();
     }
 }
