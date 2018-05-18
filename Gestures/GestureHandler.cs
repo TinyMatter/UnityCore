@@ -1,5 +1,5 @@
 ﻿using DigitalRubyShared;
-using TinyMatter.CardClash.Game;
+using TinyMatter.CardClash.Core;
 using UnityEngine;
 
 namespace TinyMatter.CardClash.Gameplay {

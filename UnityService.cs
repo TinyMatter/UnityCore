@@ -2,7 +2,7 @@
 using RSG;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.CardClash.Core {
     public class UnityService {
         public readonly Camera mainCamera;
         private PromiseTimer promiseTimer;
@@ -22,6 +22,14 @@ namespace TinyMatter.CardClash.Game {
 
         public IPromise WaitFor(float seconds) {
             return promiseTimer.WaitFor(seconds);
+        }
+
+        public IPromise WaitUntil(Func<TimeData, bool> predicate) {
+            return promiseTimer.WaitUntil(predicate);
+        }
+
+        public IPromise<T> FindObjectOfTypeAsync<T>(float timeout = 1.0f) where T : UnityEngine.Object {
+            return AsyncObjectFinder.Instance.FindObjectOfTypeAsync<T>(timeout);
         }
     }
 }
