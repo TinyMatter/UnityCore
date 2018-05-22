@@ -17,7 +17,7 @@ namespace TinyMatter.CardClash.Gameplay {
         }
         
         private void Start() {
-            //add double tap gesture
+            //add gesture
             gesture = new LongPressGestureRecognizer();
             FingersScript.Instance.AddGesture(gesture);
             
