@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.Core.Layout {
     [CreateAssetMenu(menuName = "Device Configuration/Device")]
     public class DeviceConfiguration : ScriptableObject {
         // Device Name

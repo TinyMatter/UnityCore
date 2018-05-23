@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using RSG;
+﻿using RSG;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     public class AsyncObjectFinder : Singleton<AsyncObjectFinder> {
         private readonly IPromiseTimer promiseTimer = new PromiseTimer();
 

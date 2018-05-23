@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     
     public class CaptureScreenshotBehaviour : MonoBehaviour {
 

@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
-using TinyMatter.CardClash.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;

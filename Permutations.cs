@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     /// <summary>
     /// EO: 2016-04-14
     /// Generator of all permutations of an array of anything.

@@ -1,6 +1,6 @@
 ﻿using DG.Tweening;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     public interface ISequenceable {
         ISequenceable AppendCallback(TweenCallback callback);
         ISequenceable AppendInterval(float interval);

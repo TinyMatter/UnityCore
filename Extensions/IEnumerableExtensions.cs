@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TinyMatter.Extensions {
+namespace TinyMatter.Core.Extensions {
     public static class IEnumerableExtensions {
         public static IEnumerable<IGrouping<int, TSource>> GroupBy<TSource>(this IEnumerable<TSource> source, int itemsPerGroup)
         {

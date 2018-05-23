@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Animation/Curve")]
-public class AnimationSettingCurve : ScriptableObject {
-    public AnimationCurve curve;
+namespace TinyMatter.Core {
+    [CreateAssetMenu(menuName = "Animation/Curve")]
+    public class AnimationSettingCurve : ScriptableObject {
+        public AnimationCurve curve;
+    }
 }

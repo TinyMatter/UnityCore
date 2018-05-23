@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using Sirenix.OdinInspector;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.Core.Layout {
     public abstract class DeviceConfigurator : SerializedScriptableObject {
         public abstract DeviceConfiguration GetCurrentDevice();
     }

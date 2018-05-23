@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.Core.Layout {
     public class ConfigurableCanvasScaler : CanvasScaler {
         public void Configure(DeviceConfiguration deviceConfiguration) {
             matchWidthOrHeight = deviceConfiguration.match;

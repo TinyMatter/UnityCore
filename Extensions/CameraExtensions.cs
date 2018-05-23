@@ -1,7 +1,6 @@
 using UnityEngine;
 
-
-namespace TinyMatter.Extensions {
+namespace TinyMatter.Core.Extensions {
     
     public static class CameraExtensions {
     

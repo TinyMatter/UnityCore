@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.Core.Layout {
     [CreateAssetMenu(menuName = "Device Configuration/iOS Configurator")]
     public class IOSDeviceConfigurator : DeviceConfigurator {
         [SerializeField] private DeviceConfiguration simulatedDevice;

@@ -1,6 +1,6 @@
 ﻿using DG.Tweening;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     public class DOTweenSequencer : ISequenceable {
         private readonly Sequence sequence;
 

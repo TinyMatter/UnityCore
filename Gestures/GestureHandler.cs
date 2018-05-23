@@ -1,8 +1,7 @@
 ﻿using DigitalRubyShared;
-using TinyMatter.CardClash.Core;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Gameplay {
+namespace TinyMatter.Core.Gestures {
     public abstract class GestureHandler : MonoBehaviour {
 
         protected abstract GestureRecognizer GetRecognizer();

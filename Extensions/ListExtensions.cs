@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TinyMatter.Extensions {
+namespace TinyMatter.Core.Extensions {
     public static class ListExtensions {
         private static System.Random rng = new System.Random();
         

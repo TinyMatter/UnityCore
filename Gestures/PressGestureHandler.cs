@@ -1,6 +1,4 @@
 ﻿using DigitalRubyShared;
-using TinyMatter.CardClash.Gameplay;
-using TinyMatter.Core.Gestures;
 using UnityEngine;
 
 namespace TinyMatter.Core.Gestures {

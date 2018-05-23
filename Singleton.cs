@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
 public abstract class Singleton<T> : Singleton where T : MonoBehaviour
 {
     #region Fields

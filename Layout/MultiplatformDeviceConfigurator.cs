@@ -1,7 +1,6 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TinyMatter.CardClash.Game {
+namespace TinyMatter.Core.Layout {
     [CreateAssetMenu(menuName = "Device Configuration/Platform Configurator")]
     public class MultiplatformDeviceConfigurator : DeviceConfigurator {
 

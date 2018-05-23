@@ -1,7 +1,7 @@
 ﻿using DigitalRubyShared;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Gameplay {
+namespace TinyMatter.Core.Gestures {
     public class LongPressGestureHandler : GestureHandler {
 
         [SerializeField] private int minimumTouches = 1;

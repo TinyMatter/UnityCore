@@ -2,7 +2,7 @@
 using RSG;
 using UnityEngine;
 
-namespace TinyMatter.CardClash.Core {
+namespace TinyMatter.Core {
     public class UnityService {
         public readonly Camera mainCamera;
         private PromiseTimer promiseTimer;
