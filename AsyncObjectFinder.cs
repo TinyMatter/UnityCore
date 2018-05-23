@@ -30,6 +30,17 @@ namespace TinyMatter.CardClash.Core {
             });
         }
 
+        public IPromise<T[]> FindObjectsOfTypeAsync<T>(float timeout = 1.0f) where T : Object {
+            return new Promise<T[]>((resolve, reject) => {
+                Promise.Race(
+                    WaitUntilFoundObjectOfType<T>(),
+                    TimeoutPromise(timeout)
+                ).Then(() => {
+                    resolve((T[]) Object.FindObjectsOfType(typeof(T)));
+                });
+            });
+        }
+
         private IPromise TimeoutPromise(float seconds) {
             return promiseTimer.WaitFor(seconds);
         }

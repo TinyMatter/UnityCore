@@ -31,5 +31,9 @@ namespace TinyMatter.CardClash.Core {
         public IPromise<T> FindObjectOfTypeAsync<T>(float timeout = 1.0f) where T : UnityEngine.Object {
             return AsyncObjectFinder.Instance.FindObjectOfTypeAsync<T>(timeout);
         }
+
+        public IPromise<T[]> FindObjectsOfTypeAsync<T>(float timeout = 1.0f) where T : UnityEngine.Object {
+            return AsyncObjectFinder.Instance.FindObjectsOfTypeAsync<T>(timeout);
+        }
     }
 }
