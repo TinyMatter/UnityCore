@@ -19,6 +19,18 @@ namespace TinyMatter.Core.Extensions {
             
             return new Vector3(width, height, 1f);
         }
+
+        public static Bounds WorldBounds(this RectTransform _rectTransform) {
+            var corners = new Vector3[4];
+            _rectTransform.GetWorldCorners(corners);
+            var height = corners[1].y - corners[0].y;
+            var width = corners[2].x - corners[1].x;
+            
+            var size = new Vector3(width, height, 1f);
+            var center = (corners[0] + corners[2]) / 2f;
+            
+            return new Bounds(center, size);
+        }
         
     }
     
