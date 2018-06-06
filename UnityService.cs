@@ -27,13 +27,5 @@ namespace TinyMatter.Core {
         public IPromise WaitUntil(Func<TimeData, bool> predicate) {
             return promiseTimer.WaitUntil(predicate);
         }
-
-        public IPromise<T> FindObjectOfTypeAsync<T>(float timeout = 1.0f) where T : UnityEngine.Object {
-            return AsyncObjectFinder.Instance.FindObjectOfTypeAsync<T>(timeout);
-        }
-
-        public IPromise<T[]> FindObjectsOfTypeAsync<T>(float timeout = 1.0f) where T : UnityEngine.Object {
-            return AsyncObjectFinder.Instance.FindObjectsOfTypeAsync<T>(timeout);
-        }
     }
 }
