@@ -2,8 +2,7 @@
 
 namespace TinyMatter.Core {
     public class GameEventListenerSet : MonoBehaviour {
-        [SerializeField]
-        private GameEventListener[] eventListeners;
+        [SerializeField] public GameEventListener[] eventListeners;
         
         private void OnEnable() {
             foreach (var listener in eventListeners) {
