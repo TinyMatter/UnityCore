@@ -1,9 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-using UnityEngine;
-using UnityEditor;
-
 [InitializeOnLoad]
 class CompileTime : EditorWindow
 {
