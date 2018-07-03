@@ -19,6 +19,6 @@ namespace TinyMatter.Core {
         void Add(T thing);
         void Remove(T thing);
 
-        new IEnumerator<T> GetEnumerator();
+        IEnumerator<T> GetEnumerator();
     }
 }
