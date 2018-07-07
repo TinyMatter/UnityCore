@@ -9,9 +9,9 @@ namespace TinyMatter.Core {
     public abstract class BaseVariable<T> : BaseVariableBase, IBaseVariable<T>, ISerializationCallbackReceiver, IOnChangeTriggerable {
         [Multiline] [SerializeField] private string DeveloperDescription = "";
         
-        [SerializeField] private T initialValue;
+        [SerializeField] protected T initialValue;
 
-        [SerializeField] [DisplayAsString] private T _value;
+        [SerializeField] [DisplayAsString] private T _value; 
 
         public T Value => _value;
 

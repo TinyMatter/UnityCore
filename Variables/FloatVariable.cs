@@ -10,5 +10,11 @@ namespace TinyMatter.Core {
 		public void ApplyChange(FloatVariable amount) {
 			ApplyChange(amount.Value);
 		}
+
+		public override void UpdateFromRemote() {
+			var remoteValue = RemoteSettings.GetFloat(keyName, Value);
+            
+			initialValue = remoteValue;
+		}
 	}
 }

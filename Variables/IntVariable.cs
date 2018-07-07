@@ -19,6 +19,12 @@ namespace TinyMatter.Core {
         public void ApplyChange(IntVariable amount) {
             ApplyChange(amount.Value);
         }
+
+        public override void UpdateFromRemote() {
+            var remoteValue = RemoteSettings.GetInt(keyName, Value);
+
+            initialValue = remoteValue;
+        }
     }
 }
 
