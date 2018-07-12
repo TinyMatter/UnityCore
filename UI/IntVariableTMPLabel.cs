@@ -13,6 +13,9 @@ namespace TinyMatter.Core.UI {
         
         [SerializeField] private string stringFormat = "{0:n0}";
 
+        [InfoBox("Use this if you want to adjust the number")] 
+        [SerializeField] private int addToValue = 0;
+
         [SerializeField] private IntReference initialValue = new IntReference(0);
 
         [SerializeField] private AnimationSetting animationSetting;
@@ -26,7 +29,7 @@ namespace TinyMatter.Core.UI {
             
             Assert.IsNotNull(label);
             
-            UpdateLabel(initialValue.Value);
+            UpdateLabel(initialValue.Value + addToValue);
         }
 
         
@@ -52,12 +55,12 @@ namespace TinyMatter.Core.UI {
 
         [UsedImplicitly]
         public void SetLabel(IntVariable intVariable) {
-            UpdateLabel(intVariable.Value);
+            UpdateLabel(intVariable.Value + addToValue);
         }
         
         [UsedImplicitly]
         public void AnimateLabel(IntVariable intVariable) {
-            UpdateLabel(intVariable.Value, true);
+            UpdateLabel(intVariable.Value + addToValue, true);
         }
     }
     
