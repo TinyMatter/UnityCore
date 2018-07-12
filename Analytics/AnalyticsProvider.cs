@@ -1,5 +1,4 @@
-﻿using TinyMatter.CardClash.Analytics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TinyMatter.Core.Analytics {
     public abstract class AnalyticsProvider : ScriptableObject, IAnalyticsProvider {

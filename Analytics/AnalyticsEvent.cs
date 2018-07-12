@@ -1,5 +1,4 @@
 ﻿using Sirenix.OdinInspector;
-using TinyMatter.CardClash.Analytics;
 using UnityEngine;
 
 namespace TinyMatter.Core.Analytics {
