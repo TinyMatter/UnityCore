@@ -69,10 +69,20 @@ namespace TinyMatter.Core.Sound {
 
         }
 
+        private SoundEffectController _soundEffectController;
+        private SoundEffectController soundEffectController {
+            get {
+                if (_soundEffectController != null) {
+                    return _soundEffectController;
+                }
+
+                return _soundEffectController = FindObjectOfType<SoundEffectController>();
+            }
+        }
+
         [UsedImplicitly]
         public void Play() {
-            AsyncObjectFinder.Instance.FindObjectOfTypeAsync<SoundEffectController>()
-                .Then(controller => PlayOnObject(controller.gameObject));
+            PlayOnObject(soundEffectController.gameObject);
         }
 
         protected void PlayOneShotOnAudioSource(AudioSource source) {
