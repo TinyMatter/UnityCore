@@ -60,6 +60,10 @@ namespace TinyMatter.Core {
         public override void Reset() {
             _value = initialValue;
         }
+        
+        public static implicit operator T(BaseVariable<T> v) {
+            return v.Value;
+        }
     }
     
 }
