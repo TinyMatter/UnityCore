@@ -14,6 +14,10 @@ namespace TinyMatter.Core {
         [SerializeField] private Object sceneAsset;
         [SerializeField] private string scenePath;
 
+        private SceneField(string s) {
+            scenePath = s;
+        }
+
         public string ScenePath {
             get { return scenePath; }
         }
@@ -21,6 +25,10 @@ namespace TinyMatter.Core {
         // makes it work with the existing Unity methods (LoadLevel/LoadScene)
         public static implicit operator string(SceneField sceneField) {
             return sceneField.ScenePath;
+        }
+
+        public static implicit operator SceneField(string scenePath) {
+            return new SceneField(scenePath);
         }
     }
 
