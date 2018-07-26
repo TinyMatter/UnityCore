@@ -12,8 +12,6 @@ namespace TinyMatter.Core {
         [SerializeField] private T initialValue;
 
         [SerializeField] [DisplayAsString] private T _value;
-        
-        [SerializeField] [HideInInspector] public T overrideValue;
 
         public T Value => _value;
 
@@ -60,15 +58,7 @@ namespace TinyMatter.Core {
         }
 
         public override void Reset() {
-            // ReSharper disable once ConvertIfStatementToNullCoalescingExpression
-            if (overrideValue != null) {
-                _value = overrideValue;
-
-                overrideValue = default(T);
-            }
-            else {
-                _value = initialValue;    
-            }
+            _value = initialValue;
         }
         
         public static implicit operator T(BaseVariable<T> v) {
