@@ -28,5 +28,13 @@ namespace TinyMatter.Core.Extensions {
 
             return result;
         }
+
+        public static void AddIfNotNull<T>(this List<T> list, T item) {
+            if (item == null) {
+                return;
+            }
+            
+            list.Add(item);
+        }
     }
 }
