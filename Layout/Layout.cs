@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TinyMatter.Core.Layout {
     public class Layout : MonoBehaviour {
@@ -10,6 +11,9 @@ namespace TinyMatter.Core.Layout {
         [SerializeField] private RectTransform mainGroupTransform;
         [SerializeField] private DeviceConfigurator deviceConfigurator;
         [SerializeField] private ConfigurableCanvasScaler canvasScaler;
+
+        [SerializeField] private Image mainBackgroundImage;
+        [SerializeField] private Image headerBackgroundImage;
 
         private void Awake() {
             var device = deviceConfigurator.GetCurrentDevice();
@@ -24,6 +28,15 @@ namespace TinyMatter.Core.Layout {
 
         public void Prepare() {
             Canvas.ForceUpdateCanvases();
+        }
+
+        public void PrepareForLevel(Level level) {
+            if (level.world == null) {
+                return;
+            }
+
+            mainBackgroundImage.sprite = level.world.mainBackground;
+            headerBackgroundImage.sprite = level.world.headerBackground;
         }
     }
 }
