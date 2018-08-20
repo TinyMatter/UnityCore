@@ -13,7 +13,7 @@ namespace TinyMatter.Core.Layout {
         [SerializeField] private ConfigurableCanvasScaler canvasScaler;
 
         [SerializeField] private Image mainBackgroundImage;
-        [SerializeField] private Image headerBackgroundImage;
+        [SerializeField] private Transform headerContainer;
 
         private void Awake() {
             var device = deviceConfigurator.GetCurrentDevice();
@@ -36,7 +36,7 @@ namespace TinyMatter.Core.Layout {
             }
 
             mainBackgroundImage.sprite = level.world.mainBackground;
-            headerBackgroundImage.sprite = level.world.headerBackground;
+            Instantiate(level.world.headerPrefab, headerContainer);
         }
     }
 }
