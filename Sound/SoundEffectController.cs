@@ -3,11 +3,20 @@
 namespace TinyMatter.Core.Sound {
     public class SoundEffectController : MonoBehaviour {
         [SerializeField] private BoolReference soundEffectsEnabled;
+        [SerializeField] private GameObjectEventListenerSet gameObjectEventListener;
+        [SerializeField] private GameEventListenerSet gameEventListener;
 
-        private void Start() {
-            if (!soundEffectsEnabled.Value) {
-                Destroy(gameObject.GetComponent<GameObjectEventListenerSet>());
-            }
+        private void Awake() {
+            UpdateEventListeners();
+        }
+
+        public void SoundEffectsEnabledChanged() {
+            UpdateEventListeners();
+        }
+
+        private void UpdateEventListeners() {
+            gameObjectEventListener.enabled = soundEffectsEnabled;
+            gameEventListener.enabled = soundEffectsEnabled;
         }
     }
 }

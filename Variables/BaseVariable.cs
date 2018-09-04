@@ -21,9 +21,12 @@ namespace TinyMatter.Core {
             _value = value;
 
             if (!EqualityComparer<T>.Default.Equals(previousValue, value)) {
+                ValueChanged();
                 Raise();
             }
         }
+
+        protected virtual void ValueChanged() { }
 
         public void SetValue(IBaseVariable<T> value) {
             SetValue(value as BaseVariable<T>);
