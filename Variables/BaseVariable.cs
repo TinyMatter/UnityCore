@@ -25,7 +25,7 @@ namespace TinyMatter.Core {
                 Raise();
             }
         }
-
+        
         protected virtual void ValueChanged() { }
 
         public void SetValue(IBaseVariable<T> value) {
@@ -34,6 +34,10 @@ namespace TinyMatter.Core {
 
         public void SetValue(BaseVariable<T> value) {
             SetValue(value.Value);
+        }
+
+        public void SetValueWithoutRaisingChangeEvent(T value) {
+            _value = value;
         }
 
         private readonly List<Action> changeListeners = new List<Action>();
