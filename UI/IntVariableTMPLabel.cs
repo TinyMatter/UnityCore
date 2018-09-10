@@ -17,6 +17,7 @@ namespace TinyMatter.Core.UI {
         [SerializeField] private int addToValue = 0;
 
         [SerializeField] private IntReference initialValue = new IntReference(0);
+        [SerializeField] private bool animateToInitialValue = false;
 
         [SerializeField] private AnimationSetting animationSetting;
 
@@ -28,10 +29,9 @@ namespace TinyMatter.Core.UI {
             }
             
             Assert.IsNotNull(label);
-            
-            UpdateLabel(initialValue.Value + addToValue);
-        }
 
+            UpdateLabel(initialValue.Value + addToValue, animateToInitialValue);
+        }
         
         private void UpdateLabel(int value, bool animated = false) {
             if (animated) {
