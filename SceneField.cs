@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
 using Object = UnityEngine.Object;
 #if UNITY_EDITOR
@@ -20,6 +21,10 @@ namespace TinyMatter.Core {
 
         public string ScenePath {
             get { return scenePath; }
+        }
+        
+        public string SceneName {
+            get { return Path.GetFileName(scenePath); }
         }
 
         // makes it work with the existing Unity methods (LoadLevel/LoadScene)
