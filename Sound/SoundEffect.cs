@@ -7,7 +7,7 @@ namespace TinyMatter.Core.Sound {
 
     [CreateAssetMenu(menuName = "Sounds/Effect")]
     public class SoundEffect : ScriptableObject {
-        public AudioClip audioClip;
+        [CanBeNull] public AudioClip audioClip;
 
         [Range(0f, 1f)]
         [SerializeField]
@@ -43,8 +43,43 @@ namespace TinyMatter.Core.Sound {
         [ShowIf("hapticFeedback")]
         protected iOSHapticFeedback.iOSFeedbackType hapticFeedbackType;
 
+
+        [UsedImplicitly]
+        public void Play() {
+            PlayOnObject(soundEffectController.gameObject);
+        }
+
         [UsedImplicitly]
         public void PlayOnObject(GameObject gameObject) {
+            PrepareAudioSourceForPlayingOnGameObject(gameObject, PlayOneShotOnAudioSource);
+        }
+
+        public void PlayOnObjectWithRisingIndexPitch(GameObject gameObject, int index) {
+            PrepareAudioSourceForPlayingOnGameObject(gameObject, source => {
+                startVolume = volume * (1f + Random.Range(-volumeVariance / 2f, volumeVariance / 2f));
+                source.volume = startVolume;
+
+                source.pitch = pitch + (pitchVariance * index);
+
+                source.PlayOneShot(audioClip);
+
+                PlayHapticFeedback();
+            });
+        }
+
+        private SoundEffectController _soundEffectController;
+
+        private SoundEffectController soundEffectController {
+            get {
+                if (_soundEffectController != null) {
+                    return _soundEffectController;
+                }
+
+                return _soundEffectController = FindObjectOfType<SoundEffectController>();
+            }
+        }
+
+        private void PrepareAudioSourceForPlayingOnGameObject(GameObject gameObject, System.Action<AudioSource> callback) {
             var audioSourceComponent = gameObject.GetComponent<AudioSource>();
 
             if (audioSourceComponent == null) {
@@ -61,28 +96,11 @@ namespace TinyMatter.Core.Sound {
             playDelay = Mathf.Max((delay * Random.Range(-pitchVariance / 2f, pitchVariance / 2f)), 0);
 
             if (playDelay > 0f) {
-                waitForComponent.WaitFor(playDelay, () => { PlayOneShotOnAudioSource(audioSourceComponent); });
+                waitForComponent.WaitFor(playDelay, () => { callback.Invoke(audioSourceComponent); });
             }
             else {
-                PlayOneShotOnAudioSource(audioSourceComponent);
+                callback.Invoke(audioSourceComponent);
             }
-
-        }
-
-        private SoundEffectController _soundEffectController;
-        private SoundEffectController soundEffectController {
-            get {
-                if (_soundEffectController != null) {
-                    return _soundEffectController;
-                }
-
-                return _soundEffectController = FindObjectOfType<SoundEffectController>();
-            }
-        }
-
-        [UsedImplicitly]
-        public void Play() {
-            PlayOnObject(soundEffectController.gameObject);
         }
 
         protected void PlayOneShotOnAudioSource(AudioSource source) {
