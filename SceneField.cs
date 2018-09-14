@@ -26,6 +26,17 @@ namespace TinyMatter.Core {
         public string SceneName {
             get { return Path.GetFileName(scenePath); }
         }
+        
+
+        #if UNITY_EDITOR
+        public void SetPath(string path) {
+            var fullPath =  $"Assets/{path}.unity";
+            var asset = AssetDatabase.LoadAssetAtPath(fullPath, typeof(SceneAsset));
+            sceneAsset = asset;
+            scenePath = path;
+        }   
+        #endif
+
 
         // makes it work with the existing Unity methods (LoadLevel/LoadScene)
         public static implicit operator string(SceneField sceneField) {
@@ -63,5 +74,7 @@ namespace TinyMatter.Core {
             EditorGUI.EndProperty();
         }
     }
+    
+    
     #endif
 }
