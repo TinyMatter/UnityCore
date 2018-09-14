@@ -18,6 +18,12 @@ namespace TinyMatter.Core {
 				eventListeners[i].OnEventRaised();
 		}
 
+		public void RaiseIfTrue(bool flag) {
+			if (flag) {
+				Raise();
+			}
+		}
+
 		public void RegisterListener(GameEventListener listener) {
 			if (!eventListeners.Contains(listener))
 				eventListeners.Add(listener);
