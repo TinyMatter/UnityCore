@@ -19,14 +19,11 @@ namespace TinyMatter.Core {
             scenePath = s;
         }
 
-        public string ScenePath {
-            get { return scenePath; }
-        }
-        
-        public string SceneName {
-            get { return Path.GetFileName(scenePath); }
-        }
-        
+        public string ScenePath => scenePath;
+
+        public string FullScenePath => $"Assets/{ScenePath}.unity";
+
+        public string SceneName => Path.GetFileName(scenePath);
 
         #if UNITY_EDITOR
         public void SetPath(string path) {
