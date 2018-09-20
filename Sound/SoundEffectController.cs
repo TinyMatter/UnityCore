@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace TinyMatter.Core.Sound {
     public class SoundEffectController : MonoBehaviour {
         [SerializeField] private BoolReference soundEffectsEnabled;
-        [SerializeField] private GameObjectEventListenerSet gameObjectEventListener;
-        [SerializeField] private GameEventListenerSet gameEventListener;
+        
+        [SerializeField] private List<MonoBehaviour> soundEffectEventListeners = new List<MonoBehaviour>();
 
         private void Awake() {
             UpdateEventListeners();
@@ -15,8 +16,9 @@ namespace TinyMatter.Core.Sound {
         }
 
         private void UpdateEventListeners() {
-            gameObjectEventListener.enabled = soundEffectsEnabled;
-            gameEventListener.enabled = soundEffectsEnabled;
+            foreach (var soundEffectEventListener in soundEffectEventListeners) {
+                soundEffectEventListener.enabled = soundEffectsEnabled;
+            }
         }
     }
 }
