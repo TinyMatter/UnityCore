@@ -23,7 +23,7 @@ namespace TinyMatter.Core.Gestures {
         }
 
         protected override void TouchesBegan(System.Collections.Generic.IEnumerable<GestureTouch> touches) {
-            CalculateFocus(CurrentTrackedTouches);
+            CalculateFocus(CurrentTrackedTouches, true);
 
             if (TrackedTouchCountIsWithinRange) {
                 SetState(GestureRecognizerState.Began);
@@ -42,7 +42,7 @@ namespace TinyMatter.Core.Gestures {
                 return;
             }
 
-            if (State == GestureRecognizerState.Began) {
+            if (State == GestureRecognizerState.Began || State == GestureRecognizerState.Executing) {
                 SetState(GestureRecognizerState.Executing);
             }
 
@@ -60,6 +60,7 @@ namespace TinyMatter.Core.Gestures {
                 SetState(GestureRecognizerState.Ended);
             }
             else {
+                CalculateFocus(CurrentTrackedTouches);
                 SetState(GestureRecognizerState.Failed);
             }
         }
