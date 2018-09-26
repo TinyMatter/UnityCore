@@ -9,6 +9,8 @@ namespace TinyMatter.Core.Sound {
     public class SoundEffect : ScriptableObject {
         [CanBeNull] public AudioClip audioClip;
 
+        [SerializeField] private BoolVariable soundsEnabled;
+
         [Range(0f, 1f)]
         [SerializeField]
         protected float volume = 1f;
@@ -46,15 +48,27 @@ namespace TinyMatter.Core.Sound {
 
         [UsedImplicitly]
         public void Play() {
+            if (!soundsEnabled) {
+                return;
+            }
+
             PlayOnObject(soundEffectController.gameObject);
         }
 
         [UsedImplicitly]
         public void PlayOnObject(GameObject gameObject) {
+            if (!soundsEnabled) {
+                return;
+            }
+
             PrepareAudioSourceForPlayingOnGameObject(gameObject, PlayOneShotOnAudioSource);
         }
 
         public void PlayOnObjectWithRisingIndexPitch(GameObject gameObject, int index) {
+            if (!soundsEnabled) {
+                return;
+            }
+
             PrepareAudioSourceForPlayingOnGameObject(gameObject, source => {
                 startVolume = volume * (1f + Random.Range(-volumeVariance / 2f, volumeVariance / 2f));
                 source.volume = startVolume;
