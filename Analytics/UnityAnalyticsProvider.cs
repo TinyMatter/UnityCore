@@ -23,8 +23,14 @@ namespace TinyMatter.Core.Analytics {
                 
                 Debug.Log($"--- Analytics Event '{eventName}' submitted with params: {paramsDebugString}");
             }
-            
-            UnityEngine.Analytics.Analytics.CustomEvent(eventName, eventParamDictionaries[eventName]);
+
+            #if !UNITY_EDITOR
+            var result = UnityEngine.Analytics.Analytics.CustomEvent(eventName, eventParamDictionaries[eventName]);
+
+            if (debugMode) {
+                Debug.Log($"--- Analytics Event '{eventName}' custom event result: {result}");
+            }
+            #endif
         }
     }
 }
