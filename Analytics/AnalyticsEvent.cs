@@ -9,12 +9,14 @@ namespace TinyMatter.Core.Analytics {
         public string DeveloperDescription = "";
         #endif
         
-        [SerializeField] private AnalyticsProvider provider;
+        [SerializeField] private AnalyticsProvider[] providers;
         [SerializeField] private AnalyticsParameter[] parameters;
 
         [Button, DisableInEditorMode]
-        public void Trigger() {            
-            provider.SubmitEvent(name, parameters);
+        public void Trigger() {
+            foreach (var provider in providers) {
+                provider.SubmitEvent(name, parameters);
+            }
         }
     }
 }
