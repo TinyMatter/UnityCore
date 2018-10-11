@@ -21,6 +21,8 @@ namespace TinyMatter.Core.UI {
 
         [SerializeField] private AnimationSetting animationSetting;
 
+        private Tweener tween;
+
         private int currentValue = 0;
         
         private void Awake() {
@@ -36,7 +38,7 @@ namespace TinyMatter.Core.UI {
         private void UpdateLabel(int value, bool animated = false) {
             if (animated) {
                 //tween 
-                DOTween.To(() => currentValue, val => {
+                tween = DOTween.To(() => currentValue, val => {
                         currentValue = val;
                         label.text = string.Format(stringFormat, currentValue);
                     }, value, animationSetting.duration)
@@ -55,7 +57,18 @@ namespace TinyMatter.Core.UI {
 
         [UsedImplicitly]
         public void SetLabel(IntVariable intVariable) {
-            UpdateLabel(intVariable.Value + addToValue);
+            SetLabel(intVariable.Value);
+        }
+        
+        [UsedImplicitly]
+        public void SetLabel(int value) {
+            if (tween != null) {
+                if (tween.IsPlaying()) {
+                    tween.Kill();
+                }    
+            }
+            
+            UpdateLabel(value + addToValue);
         }
         
         [UsedImplicitly]
