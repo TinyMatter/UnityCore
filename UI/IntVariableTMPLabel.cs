@@ -36,6 +36,12 @@ namespace TinyMatter.Core.UI {
         }
         
         private void UpdateLabel(int value, bool animated = false) {
+            if (tween != null) {
+                if (tween.IsActive()) {
+                    tween.Kill();
+                }
+            }
+            
             if (animated) {
                 //tween 
                 tween = DOTween.To(() => currentValue, val => {
@@ -62,18 +68,17 @@ namespace TinyMatter.Core.UI {
         
         [UsedImplicitly]
         public void SetLabel(int value) {
-            if (tween != null) {
-                if (tween.IsPlaying()) {
-                    tween.Kill();
-                }    
-            }
-            
             UpdateLabel(value + addToValue);
         }
         
         [UsedImplicitly]
         public void AnimateLabel(IntVariable intVariable) {
             UpdateLabel(intVariable.Value + addToValue, true);
+        }
+        
+        [UsedImplicitly]
+        public void AnimateLabel(int value) {
+            UpdateLabel(value + addToValue, true);
         }
     }
     
